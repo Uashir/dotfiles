@@ -52,39 +52,16 @@ Plugin 'https://github.com/plasticboy/vim-markdown'
 " ВНИМАНИЕ: требует установки ctags
 Plugin 'https://github.com/majutsushi/tagbar'
 
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
 
-" ======================= Настройка плагинов (начало) ==================== 
-" настройка YouCompleteMe
-let g:ycm_global_ycm_extra_conf =  "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-" отключаем назойливое верхнее окно для You CompleteMe
-
-set completeopt-=preview
-
-nmap <F9> :SCCompileRun<cr>
-" настройка airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-set laststatus=2
-
-" скрыть показать Nerd Tree
-nnoremap <F4> :NERDTreeToggle<CR>  
-" скрыть/показать Tagbar
-nmap <F8> :TagbarToggle<CR>
-" Включить/Выключить простой режим
-nnoremap <F3> :PencilSoft<CR>:Goyo<CR>
-" ======================= Настройка плагинов (конец) ==================== 
 
 " ======================= Основные настройки (начало) ==================== 
 filetype plugin indent on
 
 syntax on
-"  цветовой темы
-" let g:gruvbox_italic=1
-" let g:gruvbox_termcolors=256
-set t_Co=256
+" установка цветовой темы
 colorscheme gruvbox
 set background=dark
 
@@ -115,3 +92,23 @@ nnoremap <CR> :nohlsearch<CR><CR>
 nmap <F6> :set spell spelllang=en,ru<CR>
 nmap <F5> :set nospell<CR>
 " ======================= Основные настройки (конец) ==================== 
+
+" ======================= Настройка плагинов (начало) ==================== 
+" скрыть показать Nerd Tree
+nnoremap <F4> :NERDTreeToggle<CR>  
+" скрыть/показать Tagbar
+nmap <F8> :TagbarToggle<CR>
+" Включить/Выключить простой режим
+nnoremap <F3> :PencilSoft<CR>:Goyo<CR>
+" SingleCompile по нажатию F9
+nmap <F9> :SCCompileRun<cr>
+" настройка airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+set laststatus=2
+" ======================= Настройка плагинов (конец) ==================== 
+
+if filereadable(glob("~/dotfiles/vimrc.local.mac")) 
+    source ~/dotfiles/vimrc.local.mac
+endif
